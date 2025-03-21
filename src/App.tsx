@@ -17,9 +17,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const [playing, setPlaying] = useState(false);
-  const audioRef = useRef(new Audio('/src/assets/audio/诺言_陈洁丽.mp3'));
+  const [audioInited, setAudioInited] = useState(false);
+  const audioRef = useRef(new Audio(`assets/audio/诺言_陈洁丽.mp3`));
 
   const onAudioClick = () => {
+    if(!audioInited) {
+      setAudioInited(true)
+    }
     const audio = audioRef.current;
     if (playing) {
       audio.pause();
@@ -38,6 +42,29 @@ function App() {
       audio.removeEventListener('ended', handleEnded);
     };
   }, []);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    const handleEnded = () => setPlaying(false);
+    const handleVisibilityChange = () => {
+      if (document.hidden && playing) {
+        audio.pause();
+        setPlaying(false);
+      } else if(audioInited && !playing) {
+        audio.play();
+        setPlaying(true);
+      }
+    };
+
+    audio.addEventListener('ended', handleEnded);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [playing]);
 
   function initSense() {
     interface MathUtils {
@@ -181,19 +208,19 @@ function App() {
     // 修改材质创建方式
     const material = new THREE.MeshPhongMaterial({
       side: THREE.BackSide,
-      map: textureLoader.load('/textures/3d_space_5.jpg', (texture) => {
+      map: textureLoader.load(`assets/textures/3d_space_5.jpg`, (texture) => {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(15, 2);
         material.needsUpdate = true;
       }),
-      bumpMap: textureLoader.load('/textures/waveform-bump3.jpg', (texture) => {
+      bumpMap: textureLoader.load(`assets/textures/waveform-bump3.jpg`, (texture) => {
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(15, 2);
         material.needsUpdate = true;
       }),
       shininess: 20,
       bumpScale: -0.03,
-      specular: 0x0b2349
+      specular: 0x0b2349,
     });
 
     // 调整渲染器设置
@@ -326,7 +353,7 @@ function App() {
     //particle system
     // create the particle letiables
     //
-    let spikeyTexture = textureLoader.load('/textures/spikey.png');  // 改为使用public目录下的路径
+    let spikeyTexture = textureLoader.load(`assets/textures/spikey.png`);
 
 
     let particleCount = 6800,

@@ -1,0 +1,79 @@
+{
+  "hash": "72452c26",
+  "configHash": "14313a86",
+  "lockfileHash": "dadafcac",
+  "browserHash": "4cd29cfe",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "c30f188e",
+      "needsInterop": true
+    },
+    "react": {
+      "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "67d23ebb",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "682928d1",
+      "needsInterop": true
+    },
+    "gsap": {
+      "src": "../../node_modules/.pnpm/gsap@3.12.7/node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "a2445fd3",
+      "needsInterop": false
+    },
+    "gsap/ScrollTrigger": {
+      "src": "../../node_modules/.pnpm/gsap@3.12.7/node_modules/gsap/ScrollTrigger.js",
+      "file": "gsap_ScrollTrigger.js",
+      "fileHash": "305a5e87",
+      "needsInterop": false
+    },
+    "three": {
+      "src": "../../node_modules/.pnpm/three@0.174.0/node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "cbc326aa",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/RenderPass": {
+      "src": "../../node_modules/.pnpm/three@0.174.0/node_modules/three/examples/jsm/postprocessing/RenderPass.js",
+      "file": "three_examples_jsm_postprocessing_RenderPass.js",
+      "fileHash": "80b8645d",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/UnrealBloomPass": {
+      "src": "../../node_modules/.pnpm/three@0.174.0/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "file": "three_examples_jsm_postprocessing_UnrealBloomPass.js",
+      "fileHash": "27e4c33b",
+      "needsInterop": false
+    },
+    "three/examples/jsm/postprocessing/EffectComposer": {
+      "src": "../../node_modules/.pnpm/three@0.174.0/node_modules/three/examples/jsm/postprocessing/EffectComposer.js",
+      "file": "three_examples_jsm_postprocessing_EffectComposer.js",
+      "fileHash": "da26ddea",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-MNDDYEBW": {
+      "file": "chunk-MNDDYEBW.js"
+    },
+    "chunk-QMNLORZ2": {
+      "file": "chunk-QMNLORZ2.js"
+    },
+    "chunk-W4UY3UCA": {
+      "file": "chunk-W4UY3UCA.js"
+    },
+    "chunk-E2UT6VFG": {
+      "file": "chunk-E2UT6VFG.js"
+    },
+    "chunk-BUSYA2B4": {
+      "file": "chunk-BUSYA2B4.js"
+    }
+  }
+}

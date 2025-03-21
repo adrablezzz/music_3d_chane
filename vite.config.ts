@@ -11,5 +11,9 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true
-  }
+  },
+  base: '/music_3d_chane/', // gh-pages设置静态资源的根路径
+  build: {
+    outDir: 'dist', // 确保输出目录正确
+  },
 })
