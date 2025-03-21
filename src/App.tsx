@@ -3,7 +3,7 @@
  * @LastEditTime: 2025-03-21 15:36:35
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import './App.css'
@@ -16,6 +16,29 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [playing, setPlaying] = useState(false);
+  const audioRef = useRef(new Audio('/src/assets/audio/诺言_陈洁丽.mp3'));
+
+  const onAudioClick = () => {
+    const audio = audioRef.current;
+    if (playing) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setPlaying(!playing);
+  };
+  //
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    const handleEnded = () => setPlaying(false);
+    audio.addEventListener('ended', handleEnded);
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
   function initSense() {
     interface MathUtils {
       normalize: ($value: number, $min: number, $max: number) => number;
@@ -67,8 +90,6 @@ function App() {
     //Create an empty scene
     let scene = new THREE.Scene();
     scene.fog = new THREE.Fog(0x194794, 0, 100);
-
-    let clock = new THREE.Clock();
 
     //Create a perpsective camera
     let cameraRotationProxyX = 3.14159;
@@ -407,16 +428,9 @@ function App() {
       })
     }
 
-    /**
-     * 晴天，雨天，落幕又在上演，留恋，昨夜，流星划过云烟。
-总在梦里穿越，灿烂星光点点，醒来浮显眼前，是尘封的诺言。
-波浪翻过大海，倾听风的思念，我穿越人世间，再想起你的脸。
-抬头，看见，漫天风花雪月，回眸，发现，你就在我身边。
-     */
-
     const wordString = `晴天，雨天，落幕又在上演，留恋，昨夜，流星划过云烟。
     总在梦里穿越，灿烂星光点点，醒来浮显眼前，是尘封的诺言。
-    波浪翻过大海，倾听风的思念，我穿越人世间，再想起你的脸。
+    波浪翻过大海，倾听风的思念，我穿越人世间，才想起你的脸。
     抬头，看见，漫天风花雪月，回眸，发现，你就在我身边。`
 
     let textPlaneList = wordString
@@ -428,19 +442,14 @@ function App() {
 
     
     textPlaneList = textPlaneList.map((item) => setPlaneItem(item))
-
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     initSense()
   }, []);
 
-  const [playing, setPlaying] = useState(false)
-  const audio = new Audio('')
   
-  const onAudioClick = () => {
-    setPlaying(!playing)
-  }
 
   return (
     <>
